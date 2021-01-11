@@ -1,0 +1,51 @@
+<html>  
+<head>  
+    <title>PHP login system</title>   
+    <link rel = "stylesheet" type = "text/css" href = "style1.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>  
+<body onload='document.f1.ip.focus()'> 
+<div class="login-page"> 
+    <div id = "frm" class = "form">  
+        <h1>Copy logs for logstash..</h1>
+	<form name="f1" class="login-form" action = "action.php" onsubmit = "return validation()" method = "POST">
+	<input type="checkbox" id="arpd_id" name="daemonName" value="arpd">
+	<label for="arpd_id">arpd log</label><br>
+
+	<input type="checkbox" id="ndp_id" name="daemonName" value="ndp">
+        <label for="ndp_id">ndp log</label><br>
+            <p>  
+                <label> Router IP: </label>  
+                <input type = "text" id ="user" name  = "ip" />  
+            </p>  
+            <p>     
+                <input type =  "submit" id = "btn" value = "Submit" />  
+            </p>  
+        </form>  
+    </div> 
+ </div> 
+    <script>  
+function validation()  
+{  
+	var id=document.f1.user.value;  
+	if(id.length=="") {  
+		alert("Router IP field is empty");  
+		return false;  
+	}  
+	var ipformat = /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
+	if(document.f1.user.value.match(ipformat))
+	{
+		document.f1.ip.focus();
+		return true;
+	}
+	else
+	{
+		alert("You have entered an invalid IP address!");
+		document.f1.ip.focus();return false;
+	}                              
+
+}	
+	  
+        </script>  
+</body>     
+</html>  
